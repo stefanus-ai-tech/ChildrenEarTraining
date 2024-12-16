@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Musical Ear Fun!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="game-container">
+      <div class="score-panel">
+        <div class="score">
+          <span class="score-label">Score</span>
+          <span id="score-value">0</span>
+        </div>
+        <div class="level">
+          <span class="level-label">Level</span>
+          <span id="level-value">1</span>
+        </div>
+        <div class="tries">
+          <span class="tries-label">Tries</span>
+          <span id="tries-value">3</span>
+        </div>
+      </div>
+
+      <div class="animation-area"></div>
+
+      <div class="buttons-area">
+        <button class="sound-button" id="play-sound">Play Sound 🎵</button>
+        <div id="note-buttons"></div>
+      </div>
+      <div id="level-message"></div>
+
+      <div class="notification" id="result"></div>
+    </div>
+
+    <script src="https://unpkg.com/tone"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
