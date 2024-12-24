@@ -3,7 +3,7 @@
 
 A web-based game to train your musical ear by identifying notes.
 
-[**Try the Live Demo!**]([https://childeartraining.netlify.app/])
+Try the live demo here: https://childeartraining.netlify.app/
 
 ## Overview
 
@@ -31,8 +31,8 @@ A web-based game to train your musical ear by identifying notes.
 To run the game locally, simply download or clone the repository and open the `index.html` file in your web browser.
 
 ```bash
-git clone [your-repository-link]
-cd [your-repository-directory]
+git clone https://github.com/stefanus-ai-tech/ChildrenEarTraining
+cd ChildrenEarTraining
 # Open index.html in your browser
 ```
 
