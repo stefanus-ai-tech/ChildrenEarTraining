@@ -71,7 +71,7 @@ Contributions are welcome! If you have ideas for improvements, new features, or 
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE) - see the `LICENSE` file for details.
+This project is licensed under the [MIT License](https://www.mit.edu/~amini/LICENSE.md) - see the `LICENSE` file for details.
 
 ## Acknowledgements
 
