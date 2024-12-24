@@ -3,7 +3,7 @@
 
 A web-based game to train your musical ear by identifying notes.
 
-[**Try the Live Demo!**]([Replace with your live demo link if you have one])
+[**Try the Live Demo!**]([https://childeartraining.netlify.app/])
 
 ## Overview
 
