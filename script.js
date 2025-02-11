@@ -22,6 +22,15 @@ const playSoundButton = document.getElementById('play-sound');
 const resultNotification = document.getElementById('result');
 const levelMessage = document.getElementById('level-message');
 
+// Initialize Tone.js on first user interaction
+function startTone() {
+  if (Tone.context.state !== 'running') {
+    Tone.start();
+  }
+  document.removeEventListener('click', startTone);
+}
+document.addEventListener('click', startTone);
+
 // Function to play the current note
 function playCurrentNote() {
   if (currentNote && !isPlaying) {
@@ -182,15 +191,7 @@ function initGame() {
 }
 
 // Event listener for play sound button
-playSoundButton.addEventListener('click', () => {
-  if (Tone.context.state !== 'running') {
-    Tone.start().then(() => {
-      playCurrentNote();
-    });
-  } else {
-    playCurrentNote();
-  }
-});
+playSoundButton.addEventListener('click', playCurrentNote);
 
 // Start the game
 initGame();

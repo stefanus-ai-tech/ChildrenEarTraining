@@ -1,12 +1,13 @@
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
   background-color: #f0f0f0;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh; /* Use min-height to ensure it covers the whole viewport */
   margin: 0;
-  overflow: hidden;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 .game-container {
@@ -17,19 +18,30 @@ body {
   padding: 40px;
   text-align: center;
   position: relative;
-  width: 90%;
+  width: 95%; /* Slightly wider on smaller screens */
   max-width: 600px;
+  height: auto; /* Adjust height to content */
+  max-height: 95vh; /* Limit maximum height to viewport height */
+  overflow-y: auto; /* Enable vertical scrolling within the container if necessary */
 }
 
 .score-panel {
   display: flex;
-  justify-content: space-around;
-  align-items: center; /* Vertically align items */
-  margin-bottom: 30px;
-  background-color: #f8f5ff; /* Soft background */
-  padding: 15px;
+  flex-direction: column; /* Stack score panel elements vertically on smaller screens */
+  align-items: center;
+  margin-bottom: 20px; /* Reduced margin */
+  background-color: #f8f5ff;
+  padding: 20px; /* Increased padding */
   border-radius: 25px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+@media (min-width: 768px) {
+    .score-panel {
+        flex-direction: row; /* Restore horizontal layout on larger screens */
+        justify-content: space-around;
+        margin-bottom: 30px;
+    }
 }
 
 .score,
@@ -40,48 +52,47 @@ body {
   align-items: center;
   font-size: 1.1em;
   color: #555;
-  margin: 0 10px; /* Add horizontal spacing */
+  margin: 0 5px; /* Reduce horizontal spacing */
 }
 
 .score-label,
 .level-label,
 .tries-label {
   font-weight: 600;
-  color: #7c4dff; /* A fun, vibrant color */
-  margin-bottom: 5px; /* Space between label and value */
-  font-size: 0.9em;
+  color: #7c4dff;
+  margin-bottom: 3px; /* Further reduced margin */
+  font-size: 0.8em; /* Slightly smaller font size */
 }
 
 #score-value,
 #level-value,
 #tries-value {
-  font-size: 1.8em;
+  font-size: 1.6em; /* Slightly smaller font size */
   font-weight: bold;
   color: #555;
   background-color: #fff;
-  padding: 8px 16px;
+  padding: 6px 12px; /* Slightly less padding */
   border-radius: 15px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Inner shadow effect */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
 
 /* Add icons/emoji */
 .score:before {
-  content: '🏆'; /* Trophy icon */
-  font-size: 2em;
+  content: '🏆';
+  font-size: 1.8em; /* Slightly smaller icon size */
 }
 
 .level:before {
-  content: '🚀'; /* Rocket icon */
-  font-size: 2em;
+  content: '🚀';
+  font-size: 1.8em; /* Slightly smaller icon size */
 }
 
 .tries:before {
-  content: '❤️'; /* Heart icon */
-  font-size: 2em;
+  content: '❤️';
+  font-size: 1.8em; /* Slightly smaller icon size */
 }
 
 .animation-area {
-  height: 200px;
   margin-bottom: 30px;
   display: flex;
   justify-content: center;
@@ -92,16 +103,16 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 10px; /* Reduced gap */
 }
 
 .sound-button {
   background-color: #66ccff;
   color: #fff;
   border: none;
-  padding: 15px 30px;
+  padding: 16px 32px; /* Adjusted padding */
   border-radius: 30px;
-  font-size: 1.2em;
+  font-size: 1.3em;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -119,25 +130,26 @@ body {
 
 #note-buttons {
   display: flex;
-  flex-wrap: wrap; /* Allow wrapping for multiple rows */
-  justify-content: center; /* Center buttons horizontally */
-  gap: 15px;
-  max-width: 400px; /* Adjust max-width as needed */
-  margin: 0 auto; /* Center the button container */
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px; /* Further reduced gap */
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 .note-button {
   background-color: #ffcc66;
   color: #fff;
   border: none;
-  padding: 15px 25px;
+  padding: 14px 20px; /* Further adjusted padding */
   border-radius: 50%;
-  font-size: 1.1em;
+  font-size: 1.1em; /* Slightly smaller font size */
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  flex: 0 0 calc(33.33% - 15px); /* Aim for 3 buttons per row, adjust gap */
-  box-sizing: border-box; /* Include padding and border in width */
+  flex: 0 0 calc(50% - 10px); /* Two buttons per row on small screens */
+  box-sizing: border-box;
+  margin-bottom: 10px;
 }
 
 .note-button:hover {
@@ -161,12 +173,16 @@ body {
   border-radius: 30px;
   font-size: 1.5em;
   z-index: 10;
-  opacity: 0;
-  transition: opacity 0.5s;
+    opacity: 0;
+    transition: opacity 0.5s;
+    top: 50%; /* Initial position */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the element */
 }
 
 .notification.show {
-  opacity: 1;
+    opacity: 1;
+    top: 37%; /* Move to the desired position */
 }
 
 .emoji {
@@ -188,7 +204,6 @@ body {
 }
 
 .note-button {
-  /* ... existing styles ... */
   animation: float 3s ease-in-out infinite;
 }
 
@@ -214,8 +229,47 @@ body {
 .note-button:nth-child(7) {
   background-color: #ffadf8;
 } /* Light Pink */
+
 #level-message {
   font-size: 1.5em;
   color: #333;
   margin-top: 20px;
+}
+
+/* Media Query for Larger Screens */
+@media (min-width: 768px) {
+  .game-container {
+    width: 90%; /* Wider on larger screens */
+  }
+
+  .score-panel {
+    justify-content: space-around; /* Use space-around on larger screens */
+  }
+
+  .score-label,
+  .level-label,
+  .tries-label {
+    font-size: 0.9em; /* Slightly larger font size */
+  }
+
+  #score-value,
+  #level-value,
+  #tries-value {
+    font-size: 1.8em; /* Larger font size */
+    padding: 8px 16px; /* More padding */
+  }
+
+  .score:before,
+  .level:before,
+  .tries:before {
+    font-size: 2em; /* Larger icon size */
+  }
+
+  .note-button {
+    flex: 0 0 calc(33.33% - 15px); /* Three buttons per row on larger screens */
+    margin-bottom: 0;
+  }
+    #note-buttons {
+        gap: 15px;
+    }
 }
